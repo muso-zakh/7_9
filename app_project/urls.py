@@ -1,12 +1,17 @@
 from django.urls import path
-from .views import list_view, search_detail_view, detail_list_view, Post_omonim, Post_detail #DetailsApiView
+from .views import (list_view, detail_id_view,
+                    search_category_view, detail_list_view,
+                    create_category_view, create_term_view,
+                    detail_ordering)
 
 
 urlpatterns = [
     path('', list_view, name='list'),
     path('details', detail_list_view, name='details'),
-    path('search_detail', search_detail_view, name='search_detail'),
-    path('post_omonim', Post_omonim.as_view()),
-    path('post_detail', Post_detail.as_view())
+    path('search_detail', search_category_view, name='search_detail'),
+    path('post_category', create_category_view),
+    path('post_detail', create_term_view),
+    path('detail_view/<int:pk>/', detail_id_view),
+    path('detail_ordering', detail_ordering),
     # path('checkng/', DetailsApiView.as_view()),
 ]

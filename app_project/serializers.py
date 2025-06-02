@@ -1,15 +1,15 @@
 from rest_framework.serializers import ModelSerializer
-from .models import Omonim, Details
+from .models import Category, Term
 
-class OmonimSerializer(ModelSerializer):
+class CategorySerializer(ModelSerializer):
     class Meta:
-        model = Omonim
+        model = Category
         fields = '__all__'
         read_only_fields = ['id']
 
 
-class DetailsSerializer(ModelSerializer):
+class TermSerializer(ModelSerializer):
     class Meta:
-        model = Details
+        model = Term
         fields = '__all__'
         read_only_fields = ['id']
