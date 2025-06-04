@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: confic
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn project_name.wsgi"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: project_name.settings
+      - key: PYTHON_VERSION
+        value: 3.10
