@@ -23,9 +23,10 @@ from rest_framework.filters import SearchFilter
 def list_view(request):
     category = Category.objects.all()
     if category:
-        response = CategorySerializer(category, many=True)
+        response1 = CategorySerializer(category, many=True)
+        response2 = TermSerializer(Term.objects.all(), many=True)
         return Response(
-            data=response.data,
+            data={"category":response1.data,  "term":response2.data}, 
             status=status.HTTP_200_OK
         )
     return Response({'message': 'Category not found'})
@@ -137,4 +138,5 @@ def create_term_view(request):
             status=status.HTTP_201_CREATED
         )
     return Response({'error': term.errors})
+
 
